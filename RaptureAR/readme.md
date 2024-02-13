@@ -7,7 +7,7 @@
 
 ![fragment_create](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/img/fragment_create.png)
 
-	- **`onCreate(Bundle savedInstanceState)`**: Este método es llamado cuando el fragmento está siendo creado. En este caso, se llama al método `onCreate()` de la clase padre.
+- **`onCreate(Bundle savedInstanceState)`**: Este método es llamado cuando el fragmento está siendo creado. En este caso, se llama al método `onCreate()` de la clase padre.
 
 	```
 	    @Override
@@ -16,7 +16,7 @@
 	    }
 	```
 
-	- **`onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)`**: Este método infla el diseño del fragmento y devuelve la vista. Luego inicializa los elementos de la interfaz de usuario, como EditText y Button, y configura un OnClickListener para el botón.
+- **`onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)`**: Este método infla el diseño del fragmento y devuelve la vista. Luego inicializa los elementos de la interfaz de usuario, como EditText y Button, y configura un OnClickListener para el botón.
 
 	```
 	@Override
@@ -58,7 +58,7 @@
     }
     ```
 
-	- **`create(ProductDTO dto)`**: Este método crea un nuevo producto utilizando Retrofit. Se construye una instancia de Retrofit y se crea una llamada para crear un producto en el servidor remoto. Luego, la llamada se encola para ejecutarse de manera asíncrona. Se definen dos métodos de devolución de llamada para manejar la respuesta del servidor: onResponse y onFailure.
+- **`create(ProductDTO dto)`**: Este método crea un nuevo producto utilizando Retrofit. Se construye una instancia de Retrofit y se crea una llamada para crear un producto en el servidor remoto. Luego, la llamada se encola para ejecutarse de manera asíncrona. Se definen dos métodos de devolución de llamada para manejar la respuesta del servidor: onResponse y onFailure.
 
 	```
 	private void create(ProductDTO dto){
@@ -97,7 +97,7 @@
     }
 	```
 
-	- **`mostrarToast(String mensaje)`**: Este método muestra un mensaje Toast en la actividad actual con el mensaje proporcionado.
+- **`mostrarToast(String mensaje)`**: Este método muestra un mensaje Toast en la actividad actual con el mensaje proporcionado.
 
 	```
 	    private void mostrarToast(String mensaje) {
@@ -109,8 +109,7 @@
 
 ![fragment_delete](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/img/fragment_delete.png)
 
-	- **`onCreate(Bundle savedInstanceState)`**: 
-Método de creación del fragmento. Llama al método `onCreate()` de la clase padre.
+- **`onCreate(Bundle savedInstanceState)`**: Método de creación del fragmento. Llama al método `onCreate()` de la clase padre.
 
 ```
 // Método de creación del fragmento@Overridepublic void onCreate(Bundle savedInstanceState) {    // Llama al método onCreate de la superclass    super.onCreate(savedInstanceState);}
