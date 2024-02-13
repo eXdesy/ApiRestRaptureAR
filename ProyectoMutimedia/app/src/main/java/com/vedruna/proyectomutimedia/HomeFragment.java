@@ -28,7 +28,7 @@ public class HomeFragment extends Fragment {
     List<Product> productList;
     CRUDInterface crudInterface;
     ListView listView;
-    public static String IPHost = "http://192.168.0.18:8080";
+    public static String IPHost = "http://192.168.54.224:8080";
 
     // Constructor vacío requerido
     public HomeFragment() {
