@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CreateFragment">
+
+    <!-- BACKGROUND IMAGE -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!-- BACKGROUND STYLE -->
+    <View
+        android:id="@+id/semiTransparentBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/backgroundImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!-- MENU -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- THE NAME -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Nombre:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+        <!-- ENTER THE NAME -->
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el nombre"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#808080"
+            android:textColorLink="#808080"
+            android:backgroundTint="#FFFFFF"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <!-- THE PRICE -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Precio:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+        <!-- ENTER THE PRICE -->
+        <EditText
+            android:id="@+id/editTextPrecio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el precio"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#808080"
+            android:textColorLink="#808080"
+            android:backgroundTint="#FFFFFF"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp" />
+
+        <!-- THE IMAGE -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="URL:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+        <!-- ENTER THE IMAGE -->
+        <EditText
+            android:id="@+id/editTextUrlImagen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese la URL de la imagen"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#808080"
+            android:textColorLink="#808080"
+            android:backgroundTint="#FFFFFF"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crear Producto"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#088F8F"
+            android:id="@+id/buttonCrearProducto"/>
+    </LinearLayout>
+
+
+</FrameLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.vedruna.proyectomutimedia.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_createFragment"
+            app:destination="@id/createFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_deleteFragment"
+            app:destination="@id/deleteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_exitFragment"
+            app:destination="@id/exitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="com.vedruna.proyectomutimedia.CreateFragment"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create" />
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.vedruna.proyectomutimedia.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" />
+    <fragment
+        android:id="@+id/deleteFragment"
+        android:name="com.vedruna.proyectomutimedia.DeleteFragment"
+        android:label="fragment_delete"
+        tools:layout="@layout/fragment_delete" />
+    <fragment
+        android:id="@+id/exitFragment"
+        android:name="com.vedruna.proyectomutimedia.ExitFragment"
+        android:label="fragment_exit"
+        tools:layout="@layout/fragment_exit" />
+</navigation>
