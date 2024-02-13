@@ -4,7 +4,7 @@ Esta es una aplicación CRUD (Crear, Leer, Actualizar, Eliminar) simple conectad
 
 ## Deendencias
 
-[VER PARTE TECICA DE API REST](https://github.com/eXdesy/arrapture/blob/master/ProyectoMutimedia/readme.md)
+[VER PARTE TECICA DE API REST](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/arrapture/readme.md)
 
 [VER PARTE TECICA DE ANDROID APP](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/ProyectoMutimedia/readme.md)
 
