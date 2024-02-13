@@ -3,11 +3,11 @@
 
 ## Logica Principal:
 
-- **`CreateFragment`**
+- **`CreateFragment`:**
 
 ![fragment_create](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/img/fragment_create.png)
 
-- **`onCreate(Bundle savedInstanceState)`**: Este método es llamado cuando el fragmento está siendo creado. En este caso, se llama al método `onCreate()` de la clase padre.
+- 	**`onCreate(Bundle savedInstanceState)`**: Este método es llamado cuando el fragmento está siendo creado. En este caso, se llama al método `onCreate()` de la clase padre.
 
 	```
 	    @Override
