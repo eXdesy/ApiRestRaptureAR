@@ -5,40 +5,109 @@
 
 - **`CreateFragment`**
 
-![fragment_create](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/ProyectoMutimedia/img/fragment_create.png)
+![fragment_create](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/img/fragment_create.png)
 
-	- **`onCreate(Bundle savedInstanceState)`**: 
-Este método es llamado cuando el fragmento está siendo creado. En este caso, se llama al método `onCreate()` de la clase padre.
+	- **`onCreate(Bundle savedInstanceState)`**: Este método es llamado cuando el fragmento está siendo creado. En este caso, se llama al método `onCreate()` de la clase padre.
 
-```
-@Overridepublic void onCreate(Bundle savedInstanceState) {    super.onCreate(savedInstanceState);}
-```
+	```
+	    @Override
+	    public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	    }
+	```
 
-	- **`onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)`**: 
-Este método infla el diseño del fragmento y devuelve la vista. Luego inicializa los elementos de la interfaz de usuario, como EditText y Button, y configura un OnClickListener para el botón.
+	- **`onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)`**: Este método infla el diseño del fragmento y devuelve la vista. Luego inicializa los elementos de la interfaz de usuario, como EditText y Button, y configura un OnClickListener para el botón.
 
-```
-// Método para crear la vista del fragmento@Overridepublic View onCreateView(LayoutInflater inflater, ViewGroup container,                         Bundle savedInstanceState) {    // Inflar el diseño del fragmento    View rootView = inflater.inflate(R.layout.fragment_create, container, false);    // Inicializar los EditText    nameText = rootView.findViewById(R.id.editTextNombre);    priceText = rootView.findViewById(R.id.editTextPrecio);    editTextUrlImagen = rootView.findViewById(R.id.editTextUrlImagen);    // Inicializar el botón    button = rootView.findViewById(R.id.buttonCrearProducto);    // Puedes agregar un listener al botón si deseas manejar clicks    button.setOnClickListener(new View.OnClickListener() {        // Método onClick para manejar clicks en el botón        @Override        public void onClick(View v) {            // Obtener el texto del EditText del nombre            String nombre = nameText.getText().toString();            // Obtener el texto del EditText del precio            String precioString = priceText.getText().toString();            // Obtener el texto del EditText de la URL de la imagen            String urlImagen = editTextUrlImagen.getText().toString();            // Verificar si el campo de precio está vacío            if (precioString.isEmpty()) {                return;            }            // Convertir el precio a flotante            float precio = Float.parseFloat(precioString);            // Crear un objeto ProductDTO con los datos obtenidos            ProductDTO dto = new ProductDTO(nombre, precio, urlImagen);            // Llamar al método create con el objeto ProductDTO            create(dto);        }    });    // Retornar la vista inflada    return rootView;}
-```
+	```
+	@Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflar el diseño del fragmento
+        View rootView = inflater.inflate(R.layout.fragment_create, container, false);
+        // Inicializar los EditText
+        nameText = rootView.findViewById(R.id.editTextNombre);
+        priceText = rootView.findViewById(R.id.editTextPrecio);
+        editTextUrlImagen = rootView.findViewById(R.id.editTextUrlImagen);
+        // Inicializar el botón
+        button = rootView.findViewById(R.id.buttonCrearProducto);
+        // Puedes agregar un listener al botón si deseas manejar clicks
+        button.setOnClickListener(new View.OnClickListener() {
+            // Método onClick para manejar clicks en el botón
+            @Override
+            public void onClick(View v) {
+                // Obtener el texto del EditText del nombre
+                String nombre = nameText.getText().toString();
+                // Obtener el texto del EditText del precio
+                String precioString = priceText.getText().toString();
+                // Obtener el texto del EditText de la URL de la imagen
+                String urlImagen = editTextUrlImagen.getText().toString();
+                // Verificar si el campo de precio está vacío
+                if (precioString.isEmpty()) {
+                    return;
+                }
+                // Convertir el precio a flotante
+                float precio = Float.parseFloat(precioString);
+                // Crear un objeto ProductDTO con los datos obtenidos
+                ProductDTO dto = new ProductDTO(nombre, precio, urlImagen);
+                // Llamar al método create con el objeto ProductDTO
+                create(dto);
+            }
+        });
+        // Retornar la vista inflada
+        return rootView;
+    }
+    ```
 
-	- **`create(ProductDTO dto)`**: 
-Este método crea un nuevo producto utilizando Retrofit. Se construye una instancia de Retrofit y se crea una llamada para crear un producto en el servidor remoto. Luego, la llamada se encola para ejecutarse de manera asíncrona. Se definen dos métodos de devolución de llamada para manejar la respuesta del servidor: onResponse y onFailure.
+	- **`create(ProductDTO dto)`**: Este método crea un nuevo producto utilizando Retrofit. Se construye una instancia de Retrofit y se crea una llamada para crear un producto en el servidor remoto. Luego, la llamada se encola para ejecutarse de manera asíncrona. Se definen dos métodos de devolución de llamada para manejar la respuesta del servidor: onResponse y onFailure.
 
-```
-// Método para crear un productoprivate void create(ProductDTO dto){    Retrofit retrofit= new Retrofit.Builder().baseUrl(HomeFragment.IPHost).            addConverterFactory(GsonConverterFactory.create()).            build();    // Crear una instancia de la interfaz CRUDInterface    crudInterface= retrofit.create(CRUDInterface.class);    // Crear una llamada para crear un producto    Call<Product> call = crudInterface.create(dto);    // Encolar la llamada para ejecutarla de manera asíncrona    call.enqueue(new Callback<Product>() {        // Método onResponse para manejar la respuesta del servidor        @Override        public void onResponse(Call<Product> call, Response<Product> response) {            // Verificar si la respuesta no fue exitosa            if(!response.isSuccessful()){                // Registrar un error en el Log                Log.e("Response err ",response.message());                // Salir del método si la respuesta no fue exitosa                return;            }            // Obtener el producto de la respuesta            Product product=response.body();            // Mostrar un Toast indicando que el producto fue añadido correctamente            mostrarToast("Producto añadido correctamente: " + product.getName());        }        // Método onFailure para manejar fallos en la llamada        @Override        public void onFailure(Call<Product> call, Throwable t) {            /// Registrar un error en el Log            Log.e("Throw err:",t.getMessage());        }    });}
-```
+	```
+	private void create(ProductDTO dto){
+        Retrofit retrofit= new Retrofit.Builder().baseUrl(HomeFragment.IPHost).
+                addConverterFactory(GsonConverterFactory.create()).
+                build();
+        // Crear una instancia de la interfaz CRUDInterface
+        crudInterface= retrofit.create(CRUDInterface.class);
+        // Crear una llamada para crear un producto
+        Call<Product> call = crudInterface.create(dto);
 
-	- **`mostrarToast(String mensaje)`**: 
-Este método muestra un mensaje Toast en la actividad actual con el mensaje proporcionado.
+        // Encolar la llamada para ejecutarla de manera asíncrona
+        call.enqueue(new Callback<Product>() {
+            // Método onResponse para manejar la respuesta del servidor
+            @Override
+            public void onResponse(Call<Product> call, Response<Product> response) {
+                // Verificar si la respuesta no fue exitosa
+                if(!response.isSuccessful()){
+                    // Registrar un error en el Log
+                    Log.e("Response err ",response.message());
+                    // Salir del método si la respuesta no fue exitosa
+                    return;
+                }
+                // Obtener el producto de la respuesta
+                Product product=response.body();
+                // Mostrar un Toast indicando que el producto fue añadido correctamente
+                mostrarToast("Producto añadido correctamente: " + product.getName());
+            }
+            // Método onFailure para manejar fallos en la llamada
+            @Override
+            public void onFailure(Call<Product> call, Throwable t) {
+                /// Registrar un error en el Log
+                Log.e("Throw err:",t.getMessage());
+            }
+        });
+    }
+	```
 
-```
-// Método para mostrar un Toast con un mensajeprivate void mostrarToast(String mensaje) {    Toast.makeText(getActivity(), mensaje, Toast.LENGTH_SHORT).show();}
+	- **`mostrarToast(String mensaje)`**: Este método muestra un mensaje Toast en la actividad actual con el mensaje proporcionado.
 
-```
+	```
+	    private void mostrarToast(String mensaje) {
+        Toast.makeText(getActivity(), mensaje, Toast.LENGTH_SHORT).show();
+    }
+	```
 
 - **`DeleteFragment`**
 
-![fragment_delete](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/ProyectoMutimedia/img/fragment_delete.png)
+![fragment_delete](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/img/fragment_delete.png)
 
 	- **`onCreate(Bundle savedInstanceState)`**: 
 Método de creación del fragmento. Llama al método `onCreate()` de la clase padre.
@@ -77,7 +146,7 @@ Método para mostrar un `Toast`. Crea y muestra un `Toast` con un mensaje pasado
 
 - **`ExitFragment`**
 
-![fragment_exit](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/ProyectoMutimedia/img/fragment_exit.png)
+![fragment_exit](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/img/fragment_exit.png)
 
 	- **`@Override public void onCreate(Bundle savedInstanceState)`**: Este método se llama cuando se crea el fragmento. En este caso, se llama al método `onCreate()` de la superclase (`Fragment`) para realizar cualquier inicialización necesaria.
 
@@ -107,7 +176,7 @@ Este método crea un `Intent` para iniciar la actividad de inicio de sesión (`L
 
 - **`HomeFragment`**
 
-![fragment_home](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/ProyectoMutimedia/img/fragment_home.png)
+![fragment_home](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/img/fragment_home.png)
 
 	- **`onCreate(Bundle savedInstanceState)`**: 
 Este método es un método de ciclo de vida de un `Fragment` en Android. Se llama cuando el fragmento está siendo creado. En este caso, simplemente llama al método `onCreate()` de la superclase.
@@ -132,7 +201,7 @@ Este método es un método de ciclo de vida de un `Fragment` en Android. Se llam
 
 - **`LoginActivity`**
 
-![activity_login](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/ProyectoMutimedia/img/activity_login.png)
+![activity_login](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/img/activity_login.png)
 
 	- **`onCreate(Bundle savedInstanceState)`**: 
  Este método es llamado cuando la actividad está siendo creada. Aquí se inicializan los elementos de la interfaz de usuario, se configuran los listeners de eventos y se realizan otras tareas de inicialización necesarias para la actividad.
@@ -273,7 +342,7 @@ Este método es un método de ciclo de vida de un `Fragment` en Android. Se llam
 
 - **`NavigationActivity`**
 
-![navigationmenu](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/ProyectoMutimedia/img/navigationmenu.png)
+![navigationmenu](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/img/navigationmenu.png)
 
 	- **`onCreate(Bundle savedInstanceState)`**: 
 Este método es llamado cuando la actividad está empezando. Es donde se debe realizar la inicialización de la actividad, como la creación de la interfaz de usuario (llamando a setContentView()) y la lógica de inicialización. Recibe un parámetro Bundle savedInstanceState, que es un objeto que proporciona datos acerca del estado de la actividad previamente guardado, en caso de que la actividad se haya reanudado después de haber sido destruida.
@@ -291,7 +360,7 @@ protected void onNavigationItemSelectedListener(){ // Método onNavigationItemSe
 
 - **`UpdateFragment`**
 
-![fragment_update](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/ProyectoMutimedia/img/fragment_update.png)
+![fragment_update](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/img/fragment_update.png)
 
 	- **`onCreateView()`**: 
 Este método se llama cuando el fragmento necesita crear su diseño de vista. Dentro de este método, se infla el diseño del fragmento a partir de un archivo de diseño XML, se inicializan los componentes de la interfaz de usuario (EditText, Button) y se configuran los listeners de eventos, como el clic en el botón.
