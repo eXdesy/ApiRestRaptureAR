@@ -4,9 +4,9 @@ Esta es una aplicación CRUD (Crear, Leer, Actualizar, Eliminar) simple conectad
 
 ## Deendencias
 
-[VER PARTE TECICA DE API REST](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/ApiRestRaptureAR/readme.md)
+[VER PARTE TECNICA DE API REST](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/ApiRestRaptureAR/readme.md)
 
-[VER PARTE TECICA DE ANDROID APP](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/readme.md)
+[VER PARTE TECNICA DE ANDROID APP](https://github.com/eXdesy/ApiRestRaptureAR/blob/master/RaptureAR/readme.md)
 
 ### Tecnologías Utilizadas
 
