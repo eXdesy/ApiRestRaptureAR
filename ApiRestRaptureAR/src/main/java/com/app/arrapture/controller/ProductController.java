@@ -20,10 +20,9 @@ public class ProductController {
 
     /** Lista de productos */
     private final List<Product> products = new ArrayList<>(Arrays.asList(
-            new Product(1, "product1", 100, "https://media.es.wired.com/photos/647f54f7e1c13787dd8e3361/16:9/w_2240,c_limit/Apple-Vision-Pro-Hands-On-Gear-Featured-GettyImages-1496190487.jpg"),
-            new Product(2, "product2", 100, "https://media.es.wired.com/photos/647f54f7e1c13787dd8e3361/16:9/w_2240,c_limit/Apple-Vision-Pro-Hands-On-Gear-Featured-GettyImages-1496190487.jpg"),
-            new Product(3, "product3", 100, "https://media.es.wired.com/photos/647f54f7e1c13787dd8e3361/16:9/w_2240,c_limit/Apple-Vision-Pro-Hands-On-Gear-Featured-GettyImages-1496190487.jpg"),
-            new Product(4, "product4", 100, "https://media.es.wired.com/photos/647f54f7e1c13787dd8e3361/16:9/w_2240,c_limit/Apple-Vision-Pro-Hands-On-Gear-Featured-GettyImages-1496190487.jpg")
+            new Product(1, "Meta Quest 3","Gafas de realidad virtual - 128 GB, Realidad mixta revolucionaria, Potente rendimiento, Paquete Asgard’s Wrath 2, Blanco", 549, "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_123786881?x=600&y=450&format=jpg&quality=80&sp=yes&strip=yes&trim&ex=600&ey=450&align=center&resizesource&unsharp=1.5x1+0.7+0.02&cox=0&coy=0&cdx=600&cdy=450"),
+            new Product(2, "Apple Vision Pro","Apple Vision Pro (256GB)", 4447, "https://images.stockx.com/images/Apple-Vision-Pro.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1686069484?height=78&width=78"),
+            new Product(3, "PLAYSTATION VR","Gafas de PlayStation VR para PlayStation 4 y descubrirás una ventana a nuevas realidades.", 179, "https://media.game.es/COVERV2/3D_L/125/125227.png")
     ));
 
     /**
@@ -54,7 +53,7 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<Product> create(@RequestBody ProductDTO dto) {
         int index = products.isEmpty()? 1 : getLastIndex() + 1;
-        Product product = Product.builder().id(index).name(dto.getName()).price(dto.getPrice()).build();
+        Product product = Product.builder().id(index).name(dto.getName()).description(dto.getDescription()).price(dto.getPrice()).url(dto.getUrl()).build();
         products.add(product);
         return ResponseEntity.ok(product);
     }
@@ -69,7 +68,9 @@ public class ProductController {
     public ResponseEntity<Product> update(@PathVariable("id") int id, @RequestBody ProductDTO dto) {
         Product product = findById(id);
         product.setName(dto.getName());
+        product.setDescription(dto.getDescription());
         product.setPrice(dto.getPrice());
+        product.setUrl(dto.getUrl());
         return ResponseEntity.ok(product);
     }
 

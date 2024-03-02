@@ -83,6 +83,30 @@
             android:textColorLink="#808080"
             android:backgroundTint="#FFFFFF" />
 
+        <!-- THE DESCRIPTION -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Descripcion:"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#808080"
+            android:textColorLink="#808080"
+            android:textSize="18sp" />
+        <!-- ENTER THE DESCRIPTION -->
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el descripcion"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#808080"
+            android:textColorLink="#808080"
+            android:backgroundTint="#FFFFFF" />
+
         <!-- THE PRICE -->
         <TextView
             android:layout_width="match_parent"

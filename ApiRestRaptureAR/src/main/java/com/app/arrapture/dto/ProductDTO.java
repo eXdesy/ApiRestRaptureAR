@@ -16,6 +16,9 @@ public class ProductDTO {
     /** Nombre del producto. */
     private String name;
 
+    /** Descripción del producto. */
+    private String description;
+
     /** Precio del producto. */
     private int price;
 

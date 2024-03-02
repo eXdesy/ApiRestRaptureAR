@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
      * Contenedor @param Si no es nulo, esta es la vista principal en la que se encuentra el fragmento.
      * Se debe adjuntar la interfaz de usuario. El fragmento no debe agregar la vista en sí,
      * pero esto se puede usar para generar los LayoutParams de la vista.
-     * @param saveInstanceState Si no es nulo, este fragmento se está reconstruyendo
+     * @param savedInstanceState Si no es nulo, este fragmento se está reconstruyendo
      * de un estado guardado anterior como se indica aquí.
      *
      * @return Devuelve la vista creada

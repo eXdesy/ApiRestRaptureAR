@@ -17,6 +17,8 @@ public class Product {
     private int id;
     // Nombre del producto
     private String name;
+    // Descripcion del producto
+    private String description;
     // Precio del producto
     private int price;
     // URL de la imagen del producto
@@ -47,6 +49,24 @@ public class Product {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Establece la descripcion del producto.
+     *
+     * @param description El nuevo descripcion del producto.
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * Obtiene la descripcion del producto.
+     *
+     * @return El descripcion del producto.
+     */
+    public String getDescription() {
+        return description;
     }
 
     /**

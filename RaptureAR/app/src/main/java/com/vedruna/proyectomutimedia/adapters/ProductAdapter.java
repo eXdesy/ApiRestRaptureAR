@@ -63,6 +63,8 @@ public class ProductAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.nameLabel = convertView.findViewById(R.id.nameLabel);
             viewHolder.nameText = convertView.findViewById(R.id.nameText);
+            viewHolder.descriptionLabel = convertView.findViewById(R.id.descriptionLabel);
+            viewHolder.descriptionText = convertView.findViewById(R.id.descriptionText);
             viewHolder.priceLabel = convertView.findViewById(R.id.priceLabel);
             viewHolder.priceText = convertView.findViewById(R.id.priceText);
             viewHolder.imageView = convertView.findViewById(R.id.imageView);
@@ -78,8 +80,11 @@ public class ProductAdapter extends BaseAdapter {
         // Asignar los valores del producto a las vistas
         viewHolder.nameLabel.setText("Nombre: ");
         viewHolder.nameText.setText(product.getName());
+        viewHolder.descriptionLabel.setText("Descripcion: ");
+        viewHolder.descriptionText.setText(product.getDescription());
         viewHolder.priceLabel.setText("Precio: ");
         viewHolder.priceText.setText(String.valueOf(product.getPrice()));
+
         Picasso.get().load(product.getImageUrl()).into(viewHolder.imageView);
 
         return convertView; // Retornar la vista
@@ -91,10 +96,10 @@ public class ProductAdapter extends BaseAdapter {
     static class ViewHolder {
         TextView nameLabel;
         TextView nameText;
+        TextView descriptionLabel;
+        TextView descriptionText;
         TextView priceLabel;
         TextView priceText;
         ImageView imageView;
     }
 }
-
-

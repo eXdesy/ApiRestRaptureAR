@@ -1,16 +1,19 @@
 package com.vedruna.proyectomutimedia.model;
 
 import java.io.Serializable;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Clase que representa un producto.
  */
 public class Product implements Serializable {
-    // Se definen los campos ID, nombre, precio y imagen para almacenar la información del producto
+    // Se definen los campos ID, nombre, descripcion, precio y imagen para almacenar la información del producto
     private int productID;
     private String name;
+    private String description;
     private float price;
-    private String imageUrl;
+    @SerializedName("url")
+    private String imageUrl; // Cambio de "url" a "imageUrl"
 
     /**
      * Constructor vacío de la clase.
@@ -23,12 +26,14 @@ public class Product implements Serializable {
      *
      * @param productID Identificador del producto.
      * @param name      Nombre del producto.
+     * @param description      Descripcion del producto.
      * @param price     Precio del producto.
      * @param imageUrl  URL de la imagen del producto.
      */
-    public Product(int productID, String name, float price, String imageUrl) {
+    public Product(int productID, String name, String description, float price, String imageUrl) {
         this.productID = productID;
         this.name = name;
+        this.description = description;
         this.price = price;
         this.imageUrl = imageUrl;
     }
@@ -49,6 +54,15 @@ public class Product implements Serializable {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Obtiene el descripcion del producto.
+     *
+     * @return Descripcion del producto.
+     */
+    public String getDescription() {
+        return description;
     }
 
     /**
@@ -76,6 +90,15 @@ public class Product implements Serializable {
      */
     public void setProductID(int productID) {
         this.productID = productID;
+    }
+
+    /**
+     * Establece el descripcion del producto.
+     *
+     * @param description Descripcion del producto.
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /**
@@ -112,7 +135,7 @@ public class Product implements Serializable {
      */
     @Override
     public String toString() {
-        return "Id: " + getProductID() + "Name: " + getName() + "Price: " + getPrice() + "URL: " + getImageUrl();
+        return "Id: " + getProductID() + " Name: " + getName() + " Description: " + getDescription() + " Price: " + getPrice() + " URL: " + getImageUrl();
     }
 
 }

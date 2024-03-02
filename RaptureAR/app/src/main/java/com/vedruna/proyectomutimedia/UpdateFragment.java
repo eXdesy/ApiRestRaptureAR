@@ -26,6 +26,7 @@ public class UpdateFragment extends Fragment {
     EditText nameText; // Campo de texto para el nombre del producto
     EditText priceText; // Campo de texto para el precio del producto
     EditText editTextUrlImagen; // Campo de texto para la URL de la imagen del producto
+    EditText descriptionText; // Campo de texto para la descripcion del producto
     Button button; // Botón para actualizar el producto
     EditText idText; // Campo de texto para el ID del producto (nuevo)
 
@@ -55,6 +56,7 @@ public class UpdateFragment extends Fragment {
         // Inicializar los EditText
         idText = rootView.findViewById(R.id.editTextID); // Obtener el EditText para el ID del producto
         nameText = rootView.findViewById(R.id.editTextNombre); // Obtener el EditText para el nombre del producto
+        descriptionText = rootView.findViewById(R.id.editTextDescription); // Obtener el EditText para la descripcion del producto
         priceText = rootView.findViewById(R.id.editTextPrecio); // Obtener el EditText para el precio del producto
         editTextUrlImagen = rootView.findViewById(R.id.editTextUrlImagen); // Obtener el EditText para la URL de la imagen del producto
 
@@ -82,11 +84,12 @@ public class UpdateFragment extends Fragment {
     private void actualizar() { // Método para actualizar el producto
         String id = idText.getText().toString().trim(); // Obtener el ID del producto
         String nombre = nameText.getText().toString().trim(); // Obtener el nombre del producto
+        String description = descriptionText.getText().toString().trim(); // Obtener la descripcion del producto
         String precio = priceText.getText().toString().trim(); // Obtener el precio del producto
         String imagen = editTextUrlImagen.getText().toString().trim(); // Obtener la URL de la imagen del producto
 
         // Crear un objeto ProductDTO en lugar de Product
-        ProductDTO productDTO = new ProductDTO(nombre, Float.parseFloat(precio), imagen);
+        ProductDTO productDTO = new ProductDTO(nombre, description, Float.parseFloat(precio), imagen);
 
         crudInterface = retrofit.create(CRUDInterface.class); // Crear una instancia de CRUDInterface
 

@@ -14,43 +14,44 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
- * Interfaz que define las operaciones básicas CRUD para productos.
+ * Interfaz que define las operaciones CRUD (Crear, Leer, Actualizar, Borrar) para la gestión de productos.
  */
 public interface CRUDInterface {
+
     /**
-     * Obtiene todos los productos.
+     * Obtiene la lista de todos los productos.
      *
-     * @return Una llamada asíncrona que devuelve una lista de productos.
+     * @return Una llamada (Call) que devuelve una lista de productos.
      */
-    @GET("/product")
+    @GET("product")
     Call<List<Product>> getAll();
 
     /**
      * Crea un nuevo producto.
      *
-     * @param dto DTO del producto que se va a crear.
-     * @return Una llamada asíncrona que devuelve el producto creado.
+     * @param dto El objeto DTO (ProductDTO) que representa el nuevo producto a crear.
+     * @return Una llamada (Call) que devuelve el producto creado.
      */
-    @POST("/product")
-   Call<Product>create(@Body ProductDTO dto);
+    @POST("product")
+    Call<Product>create(@Body ProductDTO dto);
 
     /**
      * Actualiza un producto existente.
      *
-     * @param id          ID del producto que se va a actualizar.
-     * @param productDTO  DTO del producto actualizado.
-     * @return Una llamada asíncrona que devuelve el producto actualizado.
+     * @param id         El ID del producto a actualizar.
+     * @param productDTO El objeto DTO (ProductDTO) con los nuevos datos del producto.
+     * @return Una llamada (Call) que devuelve el producto actualizado.
      */
-    @PUT("/product/{id}")
+    @PUT("product/{id}")
     Call<Product> actualizar(@Path("id") int id, @Body ProductDTO productDTO);
 
     /**
      * Elimina un producto existente.
      *
-     * @param id ID del producto que se va a eliminar.
-     * @return Una llamada asíncrona que no devuelve ningún resultado.
+     * @param id El ID del producto a eliminar.
+     * @return Una llamada (Call) que no devuelve ningún resultado.
      */
-    @DELETE("/product/{id}")
+    @DELETE("product/{id}")
     Call<Void>delete(@Path("id")int id);
 
 }

@@ -1,13 +1,17 @@
 package com.vedruna.proyectomutimedia.dto;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Clase que representa un producto con su nombre, precio e URL de imagen.
  */
 public class ProductDTO {
     // Las variables de la clase que representan:
     private String name; // El nombre
+    private String description; // La descripción
     private float price; // El precio
-    private String imageUrl; // La URL de la imagen
+    @SerializedName("url")
+    private String imageUrl; // Cambio de "url" a "imageUrl"
 
     /**
      * Constructor por defecto de la clase ProductDTO.
@@ -20,11 +24,13 @@ public class ProductDTO {
      * Constructor que inicializa los campos name, price e imageUrl.
      *
      * @param name     El nombre del producto.
+     * @param description     La descripción del producto.
      * @param price    El precio del producto.
      * @param imageUrl La URL de la imagen del producto.
      */
-    public ProductDTO(String name, float price, String imageUrl) {
+    public ProductDTO(String name, String description, float price, String imageUrl) {
         this.name = name;
+        this.description = description;
         this.price = price;
         this.imageUrl = imageUrl;
     }
@@ -45,6 +51,24 @@ public class ProductDTO {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Obtiene la descripción del producto.
+     *
+     * @return la descripción del producto.
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Establece la descripcion del producto.
+     *
+     * @param description la Descripcion del producto.
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /**

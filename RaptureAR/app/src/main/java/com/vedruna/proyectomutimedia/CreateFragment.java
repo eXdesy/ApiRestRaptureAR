@@ -27,6 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class CreateFragment extends Fragment {
     EditText nameText; // Declaración del EditText para el nombre
+    EditText descriptionText; // Campo de texto para la descripcion del producto
     EditText priceText; // Declaración del EditText para el precio
     EditText editTextUrlImagen; // Declaración del EditText para la URL de la imagen
     Button button; // Declaración del botón
@@ -56,6 +57,7 @@ public class CreateFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_create, container, false);
         // Inicializar los EditText
         nameText = rootView.findViewById(R.id.editTextNombre);
+        descriptionText = rootView.findViewById(R.id.editTextDescription);
         priceText = rootView.findViewById(R.id.editTextPrecio);
         editTextUrlImagen = rootView.findViewById(R.id.editTextUrlImagen);
         // Inicializar el botón
@@ -67,6 +69,8 @@ public class CreateFragment extends Fragment {
             public void onClick(View v) {
                 // Obtener el texto del EditText del nombre
                 String nombre = nameText.getText().toString();
+                // Obtener el texto del EditText del description
+                String description = descriptionText.getText().toString();
                 // Obtener el texto del EditText del precio
                 String precioString = priceText.getText().toString();
                 // Obtener el texto del EditText de la URL de la imagen
@@ -78,7 +82,7 @@ public class CreateFragment extends Fragment {
                 // Convertir el precio a flotante
                 float precio = Float.parseFloat(precioString);
                 // Crear un objeto ProductDTO con los datos obtenidos
-                ProductDTO dto = new ProductDTO(nombre, precio, urlImagen);
+                ProductDTO dto = new ProductDTO(nombre, description, precio, urlImagen);
                 // Llamar al método create con el objeto ProductDTO
                 create(dto);
             }
