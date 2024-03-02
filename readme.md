@@ -57,6 +57,12 @@ Para cerrar sesión, el usuario envía una solicitud POST al punto final `/api/a
 
 <img src="https://github.com/eXdesy/ApiRestRaptureAR/blob/master/img/9.jpg" width="250" height="500" /> <img src="https://github.com/eXdesy/ApiRestRaptureAR/blob/master/img/10.jpg" width="250" height="500" />
 
+## Update 3.0
+Se solucionó el problema relacionado con la apariencia de las imágenes y se llevó a cabo un rediseño en el diseño de la lista. Además, se implementó la inclusión de una descripción para los productos.
+<img src="https://github.com/eXdesy/ApiRestRaptureAR/blob/master/img/11.jpg" width="250" height="500" /> <img src="https://github.com/eXdesy/ApiRestRaptureAR/blob/master/img/10.jpg" width="250" height="500" />
+<img src="https://github.com/eXdesy/ApiRestRaptureAR/blob/master/img/12.jpg" width="250" height="500" /> <img src="https://github.com/eXdesy/ApiRestRaptureAR/blob/master/img/10.jpg" width="250" height="500" />
+<img src="https://github.com/eXdesy/ApiRestRaptureAR/blob/master/img/13.jpg" width="250" height="500" /> <img src="https://github.com/eXdesy/ApiRestRaptureAR/blob/master/img/10.jpg" width="250" height="500" />
+
 ## Configuración y Ejecución de la Aplicación
 
 1. Clona el repositorio.
